@@ -1,0 +1,68 @@
+---
+import { STORE_INFO } from '../data/cakes';
+---
+
+<section class="pt-6 pb-8 sm:pt-14 sm:pb-16 bg-[#FCEAEF] border-b border-[#F7D5DE]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="max-w-2xl">
+      
+      <!-- Masthead Profil Toko (Highlighted & Lebih Besar) -->
+      <div class="flex items-center gap-4 sm:gap-5 mb-6 sm:mb-8 pb-5 border-b border-[#F7D5DE]">
+        <picture class="relative flex-shrink-0">
+          <source srcset="/logo.webp" type="image/webp" />
+          <img 
+            src="/logo.png" 
+            alt="Logo aydin's Kitchen" 
+            width="88"
+            height="88"
+            class="w-20 h-20 sm:w-24 sm:h-24 object-contain rounded-full bg-white p-1.5 border-2 border-white ring-2 ring-[#F7D5DE] shadow-sm flex-shrink-0"
+          />
+        </picture>
+        <div class="min-w-0">
+          <div class="flex flex-wrap items-center gap-2 mb-1">
+            <span class="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#4E2A36] leading-none tracking-tight">
+              {STORE_INFO.name}
+            </span>
+            <span class="text-[11px] font-semibold text-[#EE7A9A] bg-white border border-[#F8CAD5] px-2.5 py-0.5 rounded-full shadow-2xs">
+              Gambut & Banjarmasin
+            </span>
+          </div>
+          <p class="text-sm sm:text-base text-[#4E2A36]/85 font-medium leading-snug">
+            Dapur Rumahan Kak Winda
+          </p>
+          <p class="text-xs text-[#4E2A36]/70 mt-1">
+            Spesialis Brownies Panggang Fudgy & Bento Cake Custom
+          </p>
+        </div>
+      </div>
+
+      <!-- Headline & Subheadline -->
+      <h1 class="text-2xl sm:text-4xl lg:text-5xl font-serif font-bold text-[#4E2A36] tracking-tight leading-tight mb-3">
+        Kue Ulang Tahun dari Brownies Panggang Fudgy
+      </h1>
+
+      <p class="text-sm sm:text-base text-[#4E2A36]/85 leading-relaxed mb-6">
+        Setiap potongan terasa coklat pekatnya dengan tekstur basah legit. Dibuat langsung oleh Kak Winda di Gambut, siap memeriahkan momen ulang tahun dan hari bahagia orang tersayang.
+      </p>
+
+      <!-- Tombol Aksi Persis Referensi Screenshot Pink Terang -->
+      <div class="flex flex-wrap items-center gap-4 sm:gap-6 mb-6">
+        <a href="#galeri" class="btn-pink-pill">
+          Mau kue yang mana?
+        </a>
+        <a href="#cara-pesan" class="btn-pink-link">
+          <span>Cara pesan</span>
+          <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+
+      <!-- Keunggulan Singkat -->
+      <div class="flex flex-wrap items-center gap-y-1.5 gap-x-4 text-xs text-[#4E2A36]/80">
+        <span>&bull; Dipanggang fresh sesuai tanggal acara</span>
+        <span>&bull; Ambil di Gambut Km 14</span>
+        <span>&bull; Diantar kurir ke Banjarmasin</span>
+      </div>
+
+    </div>
+  </div>
+</section>

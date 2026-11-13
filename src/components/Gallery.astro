@@ -1,0 +1,306 @@
+---
+import { CAKES, CATEGORIES, STORE_INFO } from '../data/cakes';
+
+const formatRupiah = (num: number) => {
+  return new Intl.NumberFormat('id-ID', {
+    style: 'currency',
+    currency: 'IDR',
+    maximumFractionDigits: 0,
+  }).format(num);
+};
+
+const categoryIcons: Record<string, string> = {
+  'Semua': '',
+  'Brownies Ultah': '/icons/brownies-ultah.svg',
+  'Bento Cake': '/icons/bento-cake.svg',
+  'Kue Kering': '/icons/kue-kering.svg',
+  'Dessert Box': '/icons/dessert-box.svg',
+};
+---
+
+<section id="galeri" class="py-10 sm:py-16 max-w-6xl mx-auto px-4 sm:px-6">
+  <div class="mb-6 sm:mb-8">
+    <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#4E2A36] mb-2">
+      Koleksi Desain Kue Pilihan
+    </h2>
+    <p class="text-sm sm:text-base text-[#4E2A36]/80 max-w-xl">
+      Ketuk foto kue untuk melihat ukuran porsi dan kisaran harganya. Anda bisa langsung mengirimkan foto desain ini ke WhatsApp Kak Winda.
+    </p>
+  </div>
+
+  <!-- Filter Kategori (Langsung di atas latar pink, tanpa warna coklat & tanpa angka) -->
+  <div class="flex items-center gap-2.5 sm:gap-3 overflow-x-auto mb-8 pb-1.5 sm:pb-0 sm:flex-wrap -mx-4 px-4 sm:mx-0 sm:px-0" id="filter-container">
+    {CATEGORIES.map((category, index) => {
+      const icon = categoryIcons[category];
+      return (
+        <button
+          type="button"
+          data-filter={category}
+          class={`filter-btn btn-dock-pill ${index === 0 ? 'btn-dock-active' : 'btn-dock-inactive'}`}
+        >
+          {icon && (
+            <img
+              src={icon}
+              alt=""
+              width="22"
+              height="22"
+              class="w-5.5 h-5.5 mr-1.5 inline-block shrink-0 align-middle pointer-events-none"
+              loading="eager"
+            />
+          )}
+          <span>{category}</span>
+        </button>
+      );
+    })}
+  </div>
+
+  <!-- Masonry cards -->
+  <div class="masonry-grid" id="masonry-gallery">
+    {CAKES.map((cake) => {
+      const aspectClass = cake.aspectRatio === 'tall' 
+        ? 'aspect-[3/4]' 
+        : cake.aspectRatio === 'portrait' 
+          ? 'aspect-[4/5]' 
+          : 'aspect-square';
+
+      return (
+        <article
+          tabindex="0"
+          role="button"
+          aria-label={`Lihat detail ${cake.name}`}
+          class="masonry-item cake-card group bg-white rounded-xl overflow-hidden border border-[#F7D5DE] hover:border-[#EE7A9A] transition-colors shadow-2xs"
+          data-category={cake.category}
+          data-id={cake.id}
+          data-name={cake.name}
+          data-price={formatRupiah(cake.price)}
+          data-desc={cake.description}
+          data-dimensions={cake.dimensions}
+          data-lead={cake.leadTime}
+          data-image={cake.imageUrl}
+        >
+          <div class={`relative w-full ${aspectClass} overflow-hidden bg-[#FCEAEF]`}>
+            <img
+              src={cake.imageUrl}
+              alt={cake.name}
+              loading="lazy"
+              decoding="async"
+              class="w-full h-full object-cover group-hover:scale-102 transition-transform duration-300"
+            />
+            
+            <div class="absolute top-2.5 left-2.5">
+              <span class="bg-[#EE7A9A] text-white text-[11px] font-semibold px-2.5 py-1 rounded shadow-xs">
+                {cake.category}
+              </span>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-white">
+            <h3 class="font-bold text-sm text-[#4E2A36] line-clamp-1 mb-1.5">
+              {cake.name}
+            </h3>
+            <div class="flex items-center justify-between text-xs gap-2">
+              <span class="font-bold text-[#EE7A9A] price-tabular text-sm">
+                {cake.priceNote ? `${cake.priceNote} ` : ''}{formatRupiah(cake.price)}
+              </span>
+              <span class="inline-flex items-center gap-1 text-[11px] font-bold text-[#4E2A36] bg-[#FCE8EE] px-2.5 py-1 rounded-full border border-[#F8CAD5] group-hover:bg-[#EE7A9A] group-hover:text-white group-hover:border-[#EE7A9A] transition-all duration-150 shadow-2xs shrink-0">
+                <span>Cek Detail</span>
+                <svg class="w-3 h-3 transition-transform duration-150 group-hover:translate-x-0.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+              </span>
+            </div>
+          </div>
+        </article>
+      );
+    })}
+  </div>
+
+  <!-- Detail Dialog / Lightbox Modal -->
+  <div 
+    id="cake-modal" 
+    class="fixed inset-0 z-50 hidden bg-[#2B151B]/60 flex items-center justify-center p-4 sm:p-6 opacity-0 transition-opacity duration-200"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+  >
+    <div 
+      id="modal-card" 
+      class="bg-white rounded-2xl max-w-2xl w-full overflow-hidden border border-[#F7D5DE] shadow-xl max-h-[90vh] flex flex-col sm:flex-row relative"
+    >
+      <!-- Tombol Tutup (Pojok Kanan Atas Modal - Best Practice) -->
+      <button 
+        id="modal-close-btn"
+        type="button"
+        aria-label="Tutup jendela detail"
+        class="absolute top-3 right-3 sm:top-4 sm:right-4 z-20 w-10 h-10 min-w-[44px] min-h-[44px] rounded-full bg-white/95 hover:bg-[#FCEAEF] text-[#4E2A36] hover:text-[#EE7A9A] border border-[#F7D5DE] shadow-sm flex items-center justify-center transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#EE7A9A]"
+      >
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.2" d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+
+      <div class="w-full sm:w-1/2 h-60 sm:h-auto bg-[#FCEAEF] relative flex-shrink-0">
+        <img 
+          id="modal-image" 
+          src="" 
+          alt="Foto detail kue" 
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="w-full sm:w-1/2 p-5 sm:p-6 flex flex-col justify-between overflow-y-auto">
+        <div>
+          <!-- Badge Kategori & Waktu Pesan (Rata Kiri dengan Spasi Lega dari Tombol X) -->
+          <div class="flex flex-wrap items-center gap-2 mb-2.5 pr-14">
+            <span id="modal-category" class="text-[11px] font-bold uppercase tracking-wider text-[#EE7A9A] bg-[#FCEAEF] px-2.5 py-0.5 rounded-full">
+              Kategori
+            </span>
+            <span id="modal-lead" class="text-[11px] font-semibold text-[#4E2A36]/80 bg-[#FDF4F7] border border-[#F7D5DE] px-2.5 py-0.5 rounded-full">
+              Waktu Pesan
+            </span>
+          </div>
+
+          <h3 id="modal-title" class="text-lg sm:text-xl font-serif font-bold text-[#4E2A36] mb-2 leading-snug pr-12">
+            Nama Kue
+          </h3>
+
+          <div class="mb-3">
+            <span class="text-xs text-[#4E2A36]/70 block mb-0.5">Estimasi Harga</span>
+            <p id="modal-price" class="text-xl font-bold text-[#EE7A9A] price-tabular">
+              Rp 0
+            </p>
+          </div>
+
+          <p id="modal-desc" class="text-xs sm:text-sm text-[#4E2A36]/85 leading-relaxed mb-4">
+            Keterangan kue.
+          </p>
+
+          <dl class="bg-[#FDF4F7] p-3 rounded-lg border border-[#F7D5DE] text-xs text-[#4E2A36]/85 space-y-1 mb-5">
+            <div class="flex justify-between">
+              <dt class="font-semibold">Ukuran / Porsi:</dt>
+              <dd id="modal-dimensions" class="text-right">-</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="font-semibold">Bahan Dasar:</dt>
+              <dd class="text-right">Brownies Panggang Coklat</dd>
+            </div>
+            <div class="flex justify-between">
+              <dt class="font-semibold">Wilayah Antar:</dt>
+              <dd class="text-right">Gambut & Banjarmasin</dd>
+            </div>
+          </dl>
+        </div>
+
+        <a 
+          id="modal-wa-btn"
+          href="#"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="btn-whatsapp w-full"
+        >
+          <svg class="w-4 h-4 fill-current flex-shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.592 2.654-.697c1.002.546 1.761.822 2.806.823h.005c3.182 0 5.767-2.587 5.768-5.766.001-3.182-2.585-5.77-5.773-5.771zm3.392 8.244c-.144.405-.837.774-1.17.824-.299.045-.677.063-1.092-.069-.252-.08-.575-.187-.988-.365-1.739-.751-2.874-2.502-2.961-2.617-.087-.116-.708-.94-.708-1.793s.448-1.273.607-1.446c.159-.173.346-.217.462-.217l.332.006c.106.005.249-.04.39.298.144.347.491 1.2.534 1.287.043.087.072.188.014.304-.058.116-.087.188-.173.289l-.26.304c-.087.086-.177.18-.076.354.101.174.449.741.964 1.201.662.591 1.221.774 1.394.861.174.086.275.072.376-.044.101-.116.433-.506.549-.68.116-.173.231-.145.39-.086s1.011.477 1.184.564.289.13.332.202c.045.072.045.419-.099.824z"/>
+          </svg>
+          <span>Chat WA Kak Winda</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{ waNumber: STORE_INFO.whatsappNumber }}>
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  const cakeCards = document.querySelectorAll('.cake-card');
+  const modal = document.getElementById('cake-modal');
+  const modalCloseBtn = document.getElementById('modal-close-btn');
+  const modalImage = document.getElementById('modal-image');
+  const modalTitle = document.getElementById('modal-title');
+  const modalCategory = document.getElementById('modal-category');
+  const modalPrice = document.getElementById('modal-price');
+  const modalDesc = document.getElementById('modal-desc');
+  const modalDimensions = document.getElementById('modal-dimensions');
+  const modalLead = document.getElementById('modal-lead');
+  const modalWaBtn = document.getElementById('modal-wa-btn');
+
+  let lastActiveElement = null;
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const selected = btn.getAttribute('data-filter');
+
+      filterBtns.forEach(b => {
+        b.classList.remove('btn-dock-active');
+        b.classList.add('btn-dock-inactive');
+      });
+      btn.classList.add('btn-dock-active');
+      btn.classList.remove('btn-dock-inactive');
+
+      cakeCards.forEach(card => {
+        const cat = card.getAttribute('data-category');
+        const isMatch = selected === 'Semua' || cat === selected;
+        card.style.display = isMatch ? 'block' : 'none';
+        if (isMatch) card.classList.add('fade-in');
+      });
+    });
+  });
+
+  function openModal(card) {
+    lastActiveElement = card;
+    const name = card.getAttribute('data-name');
+    const category = card.getAttribute('data-category');
+    const price = card.getAttribute('data-price');
+    const desc = card.getAttribute('data-desc');
+    const dimensions = card.getAttribute('data-dimensions');
+    const lead = card.getAttribute('data-lead');
+    const image = card.getAttribute('data-image');
+
+    modalTitle.textContent = name;
+    modalCategory.textContent = category;
+    modalPrice.textContent = price;
+    modalDesc.textContent = desc;
+    modalDimensions.textContent = dimensions;
+    modalLead.textContent = lead;
+    modalImage.src = image;
+    modalImage.alt = `Foto ${name}`;
+
+    const message = `Halo Kak Winda (aydin's Kitchen),\n\nSaya ingin memesan kue dengan referensi berikut:\n* Desain: ${name}\n* Kategori: ${category}\n* Estimasi Harga: ${price}\n* Ukuran: ${dimensions}\n\nApakah slot tanggal acara saya masih tersedia? Terima kasih.`;
+    modalWaBtn.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(() => {
+      modal.classList.remove('opacity-0');
+      modalCloseBtn.focus();
+    });
+  }
+
+  function closeModal() {
+    modal.classList.add('opacity-0');
+    setTimeout(() => {
+      modal.classList.add('hidden');
+      document.body.style.overflow = '';
+      if (lastActiveElement) lastActiveElement.focus();
+    }, 150);
+  }
+
+  cakeCards.forEach(card => {
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        openModal(card);
+      }
+    });
+  });
+
+  modalCloseBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !modal.classList.contains('hidden')) {
+      closeModal();
+    }
+  });
+</script>

@@ -1,0 +1,72 @@
+---
+import { STORE_INFO } from '../data/cakes';
+---
+
+<footer id="kontak" class="bg-[#38121E] text-[#FDF2F4] py-12">
+  <div class="max-w-6xl mx-auto px-4 sm:px-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 pb-8 border-b border-white/15">
+      
+      <div>
+        <div class="flex items-center gap-3 mb-3">
+          <picture>
+            <source srcset="/logo.webp" type="image/webp" />
+            <img 
+              src="/logo.png" 
+              alt="Logo aydin's Kitchen" 
+              width="44" 
+              height="44" 
+              class="w-11 h-11 object-contain rounded-full bg-white p-1 flex-shrink-0" 
+            />
+          </picture>
+          <h3 class="font-serif text-xl font-bold text-white">
+            {STORE_INFO.name}
+          </h3>
+        </div>
+        <p class="text-xs sm:text-sm text-[#F5D0DA] leading-relaxed mb-3">
+          Usaha kue rumahan milik {STORE_INFO.owner}. Dibuat dengan bahan baku berkualitas dan resep brownies panggang khas.
+        </p>
+        <p class="text-xs text-[#F5D0DA]/80">
+          Lokasi Dapur: Gambut, Kabupaten Banjar, Kalimantan Selatan.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm text-white mb-2 uppercase tracking-wider">
+          Wilayah Pengantaran
+        </h4>
+        <p class="text-xs sm:text-sm text-[#F5D0DA] leading-relaxed mb-2">
+          Melayani pesanan untuk area Gambut, Kertak Hanyar, Landasan Ulin, dan Banjarmasin Kota.
+        </p>
+        <p class="text-xs text-[#F5D0DA]/80">
+          Titik penjemputan mandiri: Sekitar Jl. A. Yani Km 14 Gambut.
+        </p>
+      </div>
+
+      <div>
+        <h4 class="font-bold text-sm text-white mb-2 uppercase tracking-wider">
+          Kontak Langsung
+        </h4>
+        <p class="text-xs sm:text-sm text-[#F5D0DA] mb-2">
+          Pemesanan dan konsultasi:
+        </p>
+        <a 
+          href={`https://wa.me/${STORE_INFO.whatsappNumber}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="text-sm font-bold text-[#8CE39E] hover:underline block mb-2"
+        >
+          WhatsApp: {STORE_INFO.phoneDisplay}
+        </a>
+        <p class="text-xs text-[#F5D0DA]/80">
+          Waktu respon: Setiap hari 08.00 sampai 20.00 WITA.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-[#F5D0DA]/70 gap-2">
+      <p>&copy; {new Date().getFullYear()} {STORE_INFO.name}. Hak cipta dilindungi.</p>
+      <p>Kue ulang tahun brownies buatan tangan dari Gambut.</p>
+    </div>
+  </div>
+</footer>

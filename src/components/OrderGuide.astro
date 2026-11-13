@@ -1,0 +1,78 @@
+---
+import { STORE_INFO } from '../data/cakes';
+---
+
+<section id="cara-pesan" class="py-12 sm:py-16 bg-[#FCE8ED]/60 border-y border-[#F5D0DA]">
+  <div class="max-w-4xl mx-auto px-4 sm:px-6">
+    <div class="mb-8">
+      <h2 class="text-2xl sm:text-3xl font-serif font-bold text-[#38121E] mb-2">
+        Pesan Praktis & Pengiriman Aman
+      </h2>
+      <p class="text-sm sm:text-base text-[#38121E]/80">
+        Kue dipanggang fresh from oven khusus untuk hari bahagia Anda di Gambut dan Banjarmasin.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+      <!-- Jadwal Pre-Order -->
+      <div class="bg-white p-6 rounded-xl border border-[#F5D0DA] shadow-2xs">
+        <h3 class="font-bold text-base text-[#38121E] mb-2">
+          Dipanggang Fresh Sesuai Jadwal Acara
+        </h3>
+        <p class="text-xs sm:text-sm text-[#38121E]/85 leading-relaxed mb-4">
+          Kami tidak menyimpan stok kue lama. Seluruh brownies baru dipanggang mendekati waktu penyerahan agar bagian dalam tetap basah legit dan dekorasinya kokoh.
+        </p>
+        <ul class="text-xs sm:text-sm text-[#38121E]/85 space-y-2">
+          <li class="flex items-start gap-2">
+            <span class="font-bold text-[#C22B5D]">&bull;</span>
+            <span><strong>Bento cake & dessert box:</strong> pesan minimal H-1 sebelum acara.</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="font-bold text-[#C22B5D]">&bull;</span>
+            <span><strong>Kue ulang tahun custom & bertingkat:</strong> pesan minimal H-2 atau H-3.</span>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Opsi Pengiriman -->
+      <div class="bg-white p-6 rounded-xl border border-[#F5D0DA] shadow-2xs">
+        <h3 class="font-bold text-base text-[#38121E] mb-2">
+          Pilihan Ambil Sendiri atau Antar Kurir
+        </h3>
+        <p class="text-xs sm:text-sm text-[#38121E]/85 leading-relaxed mb-4">
+          Kue dikemas rapi dalam kardus kokoh sehingga aman sampai di meja pesta Anda:
+        </p>
+        <ul class="text-xs sm:text-sm text-[#38121E]/85 space-y-2">
+          <li class="flex items-start gap-2">
+            <span class="font-bold text-[#C22B5D]">&bull;</span>
+            <span><strong>Ambil Sendiri:</strong> titik penjemputan di Gambut Km 14 (arah Pasar Gambut).</span>
+          </li>
+          <li class="flex items-start gap-2">
+            <span class="font-bold text-[#C22B5D]">&bull;</span>
+            <span><strong>Diantar Kurir:</strong> melayani wilayah Gambut, Kertak Hanyar, Landasan Ulin, hingga Banjarmasin Kota.</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Kotak Hubungi -->
+    <div class="bg-white p-6 rounded-xl border border-[#F5D0DA] shadow-2xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+      <div>
+        <h4 class="font-bold text-sm sm:text-base text-[#38121E] mb-1">
+          Punya Contoh Desain Kue Sendiri?
+        </h4>
+        <p class="text-xs sm:text-sm text-[#38121E]/80">
+          Kirimkan foto referensi dari Instagram atau Pinterest ke WhatsApp. Kak Winda siap bantu wujudkan dengan base brownies legit.
+        </p>
+      </div>
+      <a 
+        href={`https://wa.me/${STORE_INFO.whatsappNumber}?text=Halo%20Kak%20Winda,%20saya%20mau%20konsultasi%20desain%20kue%20custom.`}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary flex-shrink-0 text-xs sm:text-sm"
+      >
+        Tanya Desain Custom
+      </a>
+    </div>
+  </div>
+</section>

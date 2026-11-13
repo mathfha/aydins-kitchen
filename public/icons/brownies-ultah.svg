@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" fill="none">
+  <!-- Candle flame -->
+  <path d="M12 2c-.8 1-1.2 1.8-1.2 2.5a1.2 1.2 0 0 0 2.4 0C13.2 3.8 12.8 3 12 2z" fill="#FFA726" stroke="#4E2A36" stroke-width="0.8"/>
+  <!-- Candle body -->
+  <line x1="12" y1="4.5" x2="12" y2="8.5" stroke="#FFFFFF" stroke-width="2.2" stroke-linecap="round"/>
+  <line x1="12" y1="4.5" x2="12" y2="8.5" stroke="#4E2A36" stroke-width="0.8" stroke-dasharray="1 1.5"/>
+  <!-- Top cream frosting -->
+  <ellipse cx="12" cy="10" rx="7" ry="2.6" fill="#FFFFFF" stroke="#4E2A36" stroke-width="1.5"/>
+  <!-- Brownie body -->
+  <path d="M5 10v6.2c0 1.5 3.1 2.8 7 2.8s7-1.3 7-2.8V10" fill="#5A2E3B" stroke="#4E2A36" stroke-width="1.5"/>
+  <!-- Chocolate ganache wave -->
+  <path d="M5 11c1 .8 2 .8 3 0s2-.8 3 0 2 .8 3 0 2-.8 3 0 2 .8 2 0" stroke="#FCEAEF" stroke-width="1.2" fill="none"/>
+  <!-- Strawberry on top -->
+  <circle cx="15.5" cy="9.2" r="1.5" fill="#EE7A9A" stroke="#4E2A36" stroke-width="1"/>
+</svg>

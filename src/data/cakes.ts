@@ -1,0 +1,171 @@
+export interface Cake {
+  id: string;
+  name: string;
+  category: 'Brownies Ultah' | 'Bento Cake' | 'Kue Kering' | 'Dessert Box';
+  price: number;
+  priceNote?: string;
+  description: string;
+  dimensions: string;
+  leadTime: string;
+  imageUrl: string;
+  aspectRatio: 'square' | 'portrait' | 'tall';
+  featured?: boolean;
+}
+
+export const CAKES: Cake[] = [
+  {
+    id: 'cake-01',
+    name: 'Brownies Ultah Ganache Stroberi',
+    category: 'Brownies Ultah',
+    price: 185000,
+    priceNote: 'Mulai',
+    description: 'Brownies panggang coklat legit dengan lelehan dark chocolate ganache tebal dan buah stroberi segar. Tekstur padat dan lumer saat digigit.',
+    dimensions: 'Diameter 18 cm (8 sampai 10 potong)',
+    leadTime: 'Pesan H-2',
+    imageUrl: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'portrait',
+    featured: true,
+  },
+  {
+    id: 'cake-02',
+    name: 'Bento Brownies Korean Pastel',
+    category: 'Bento Cake',
+    price: 65000,
+    description: 'Brownies mini porsi personal dengan polesan krim pastel estetik. Cocok untuk hadiah ulang tahun sahabat atau kejutan berdua.',
+    dimensions: 'Diameter 10 cm (1 sampai 2 orang)',
+    leadTime: 'Pesan H-1',
+    imageUrl: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'square',
+    featured: true,
+  },
+  {
+    id: 'cake-03',
+    name: 'Brownies Ultah Selai Biscoff Karamel',
+    category: 'Brownies Ultah',
+    price: 195000,
+    priceNote: 'Mulai',
+    description: 'Paduan brownies coklat pekat berselimut selai Lotus Biscoff karamel, remahan biskuit renyah, dan taburan kacang panggang wangi.',
+    dimensions: 'Diameter 18 cm (8 sampai 10 potong)',
+    leadTime: 'Pesan H-2',
+    imageUrl: 'https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'tall',
+  },
+  {
+    id: 'cake-04',
+    name: 'Kue Susun Brownies Rustic Berry',
+    category: 'Brownies Ultah',
+    price: 260000,
+    priceNote: 'Mulai',
+    description: 'Dua tingkat brownies panggang tebal bertabur aneka buah berry segar dan daun rosemary alami untuk syukuran keluarga besar.',
+    dimensions: 'Tingkat 18 cm dan 12 cm',
+    leadTime: 'Pesan H-3',
+    imageUrl: 'https://images.unsplash.com/photo-1565958011703-44f9829ba187?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'tall',
+    featured: true,
+  },
+  {
+    id: 'cake-05',
+    name: 'Brownies Sekat Fudgy Almond',
+    category: 'Dessert Box',
+    price: 85000,
+    description: 'Brownies panggang renyah di atas dengan bagian dalam basah legit. Taburan irisan almond panggang tebal di tiap potongannya.',
+    dimensions: 'Loyang 20x20 cm (16 potong rapi)',
+    leadTime: 'Pesan H-1',
+    imageUrl: 'https://images.unsplash.com/photo-1515037893149-de7f840978e2?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'square',
+  },
+  {
+    id: 'cake-06',
+    name: 'Bento Brownies Pita Vintage',
+    category: 'Bento Cake',
+    price: 75000,
+    description: 'Kue bento brownies berdekorasi renda pita klasik dan butiran mutiara gula lembut. Sudah termasuk lilin spiral gratis.',
+    dimensions: 'Diameter 10 cm (1 sampai 2 orang)',
+    leadTime: 'Pesan H-1',
+    imageUrl: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'portrait',
+  },
+  {
+    id: 'cake-07',
+    name: 'Kastengel Keju Edam Asli',
+    category: 'Kue Kering',
+    price: 95000,
+    description: 'Kue kering klasik berbahan keju edam tua dengan taburan cheddar renyah. Rasa asin gurihnya pas dan lumer di mulut.',
+    dimensions: 'Toples 350 gram padat',
+    leadTime: 'Pesan H-2',
+    imageUrl: 'https://images.unsplash.com/photo-1558961363-fa8fdf82db35?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'square',
+  },
+  {
+    id: 'cake-08',
+    name: 'Brownies Ultah Drip Coklat Leleh',
+    category: 'Brownies Ultah',
+    price: 210000,
+    priceNote: 'Mulai',
+    description: 'Brownies ulang tahun tinggi dengan aksen lelehan coklat ganache di sekeliling kue, hiasan macaron mini, dan custom kartu ucapan.',
+    dimensions: 'Diameter 16 cm tinggi (6 sampai 8 potong)',
+    leadTime: 'Pesan H-2',
+    imageUrl: 'https://images.unsplash.com/photo-1535141192574-5d4897c13136?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'tall',
+  },
+  {
+    id: 'cake-09',
+    name: 'Nastar Wisman Nanas Rumahan',
+    category: 'Kue Kering',
+    price: 90000,
+    description: 'Kue nastar mentega Wisman wangi berpadu selai nanas madu buatan sendiri. Manis alami dan tanpa bahan pengawet.',
+    dimensions: 'Toples 350 gram padat',
+    leadTime: 'Pesan H-2',
+    imageUrl: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'square',
+  },
+  {
+    id: 'cake-10',
+    name: 'Brownies Lumer Krim Matcha',
+    category: 'Brownies Ultah',
+    price: 180000,
+    description: 'Kombinasi brownies coklat pekat dengan olesan krim matcha teh hijau aromatik. Rasa manis dan pahit teh berpadu seimbang.',
+    dimensions: 'Diameter 16 cm (6 sampai 8 potong)',
+    leadTime: 'Pesan H-2',
+    imageUrl: 'https://images.unsplash.com/photo-1506459225024-1428097a7e18?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'portrait',
+  },
+  {
+    id: 'cake-11',
+    name: 'Dessert Box Brownies Stroberi Susu',
+    category: 'Dessert Box',
+    price: 55000,
+    description: 'Potongan brownies legit berlapis krim susu vanilla lembut dan lumuran buah stroberi segar dalam kemasan kotak praktis.',
+    dimensions: 'Kotak 10x10 cm (400 ml)',
+    leadTime: 'Pesan H-1',
+    imageUrl: 'https://images.unsplash.com/photo-1541781774459-bb2af2f05b55?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'square',
+  },
+  {
+    id: 'cake-12',
+    name: 'Brownies Ultah Lukis Karakter',
+    category: 'Brownies Ultah',
+    price: 225000,
+    priceNote: 'Mulai',
+    description: 'Kue ulang tahun brownies dengan dekorasi lukisan buttercream karakter kartun kesukaan anak dan ucapan doa penuh warna.',
+    dimensions: 'Diameter 18 cm (8 sampai 10 potong)',
+    leadTime: 'Pesan H-3',
+    imageUrl: 'https://images.unsplash.com/photo-1588195538326-c5b1e9f80a1b?q=80&w=900&auto=format&fit=crop',
+    aspectRatio: 'tall',
+    featured: true,
+  },
+];
+
+export const CATEGORIES = ['Semua', 'Brownies Ultah', 'Bento Cake', 'Kue Kering', 'Dessert Box'] as const;
+
+export const STORE_INFO = {
+  name: "aydin's Kitchen",
+  owner: 'Winda Safitri',
+  whatsappNumber: '6281234567890',
+  phoneDisplay: '+62 812-3456-7890',
+  city: 'Gambut, Kab. Banjar',
+  serviceAreas: ['Gambut', 'Kertak Hanyar', 'Banjarmasin', 'Landasan Ulin'],
+  leadTimeDefault: 'Pre-order H-2 atau H-3',
+  instagram: '@aydins_kitchen',
+  pickupPoint: 'Gambut, Jl. A. Yani Km 14 (arah Pasar Gambut)',
+};
